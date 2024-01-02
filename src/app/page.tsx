@@ -1,5 +1,5 @@
 import Logo from './components/Logo'
-import app from '../../firebase/firebase'
+import app from '../lib/firebase/firebase'
 
 export default function Home() {
   const signInWithGoogle = async () => {
