@@ -1,13 +1,14 @@
 import Logo from './components/Logo'
-import app from '../lib/firebase/firebase'
+import { firebaseApp } from '../lib/firebase/firebase'
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 export default function Home() {
   const signInWithGoogle = async () => {
+    const auth = getAuth(firebaseApp);
+    const provider = new GoogleAuthProvider();
 
-    // Google Signin
-    const provider = new app.auth.GoogleAuthProvider();
     try {
-      await app.auth().signInWithPopup(provider);
+      await signInWithPopup(auth, provider);
     } catch (error) {
       console.error('Error signing in with Google:', error);
     }
@@ -18,4 +19,21 @@ export default function Home() {
       <Logo />
     </main>
   )
+  // ...
 }
+
+
+
+// export default function Home() {
+//   const signInWithGoogle = async () => {
+
+//     // Google Signin
+//     const provider = new firebaseApp.auth.GoogleAuthProvider();
+//     try {
+//       await firebaseApp.auth().signInWithPopup(provider);
+//     } catch (error) {
+//       console.error('Error signing in with Google:', error);
+//     }
+//   }
+
+// }
