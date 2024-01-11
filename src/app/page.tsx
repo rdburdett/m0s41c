@@ -1,31 +1,38 @@
-import Logo from './components/Logo'
-import { firebaseApp } from '../lib/firebase/firebase'
+import Logo from "./components/Logo";
+import { firebaseApp } from "../lib/firebase/firebase";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import DndList from './components/DndList';
-import '@mantine/core/styles.css';
+// import DndList from "./components/DndList";
+import "@mantine/core/styles.css";
+import type { AppProps } from "next/app";
+import { createTheme, MantineProvider } from "@mantine/core";
 
-export default function Home() {
-  const signInWithGoogle = async () => {
-    const auth = getAuth(firebaseApp);
-    const provider = new GoogleAuthProvider();
+const theme = createTheme({
+	/** Put your mantine theme override here */
+});
 
-    try {
-      await signInWithPopup(auth, provider);
-    } catch (error) {
-      console.error('Error signing in with Google:', error);
-    }
-  }
+export default function Home({ Component, pageProps }: AppProps) {
+	const signInWithGoogle = async () => {
+		const auth = getAuth(firebaseApp);
+		const provider = new GoogleAuthProvider();
 
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <Logo />
-      <DndList />
-    </main>
-  )
-  // ...
+		try {
+			await signInWithPopup(auth, provider);
+		} catch (error) {
+			console.error("Error signing in with Google:", error);
+		}
+	};
+
+	return (
+		<MantineProvider theme={theme}>
+			<Component {...pageProps} />
+			<main className="flex min-h-screen flex-col items-center justify-between p-24">
+				<Logo />
+				{/* <DndList /> */}
+			</main>
+		</MantineProvider>
+	);
+	// ...
 }
-
-
 
 // export default function Home() {
 //   const signInWithGoogle = async () => {
