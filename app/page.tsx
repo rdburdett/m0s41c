@@ -1,7 +1,7 @@
 import { firebaseApp } from "../lib/firebase/firebase";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import Logo from "../components/Logo";
-import DndList from "../components/DndList";
+import DndList from "../components/DndList/DndList";
 import "@mantine/core/styles.css";
 
 export default function Home() {

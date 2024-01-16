@@ -3,7 +3,7 @@ import cx from 'clsx';
 import { Text } from '@mantine/core';
 import { useListState } from '@mantine/hooks';
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
-import classes from './index.module.css';
+import classes from './DndList';
 
 const data = [
   { position: 6, mass: 12.011, symbol: 'C', name: 'Carbon' },
