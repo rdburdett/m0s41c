@@ -17,9 +17,7 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en" className="dark">
-			<head>
-				{/* <ColorSchemeScript /> */}
-			</head>
+			<head></head>
 			<body className={inter.className}>
 				<Providers>
 					{children}
