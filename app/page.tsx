@@ -1,6 +1,7 @@
 import { firebaseApp } from "../lib/firebase/firebase";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import Logo from "../components/Logo";
+import { app } from '../firebase/firebaseApp'
 
 export default function Home() {
 	const signInWithGoogle = async () => {

@@ -1,9 +1,11 @@
 import "server-only";
-
 import { cookies } from "next/headers";
-
 import { initializeApp, getApps, cert } from "firebase-admin/app";
 import { SessionCookieOptions, getAuth } from "firebase-admin/auth";
+
+if (!process.env.FIREBASE_ADMIN_SERVICE_ACCOUNT) {
+  throw new Error('The FIREBASE_ADMIN_SERVICE_ACCOUNT environment variable is not set.');
+}
 
 export const firebaseApp =
   getApps().find((it) => it.name === "firebase-admin-app") ||
